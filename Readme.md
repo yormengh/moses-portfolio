@@ -23,7 +23,7 @@ Open your terminal and run:
 # Clone or initialize
 git init
 git add .
-git commit -m "Initial portfolio deploy"
+git commit -m "Initial portfolio deployment"
 git branch -M main
 git remote add origin https://github.com/yormengh/moses-portfolio.git
 git push -u origin main
@@ -41,18 +41,23 @@ git push -u origin main
 You need 3 secrets for the CI/CD pipeline:
 
 #### VERCEL_TOKEN
+
 1. Go to [vercel.com/account/tokens](https://vercel.com/account/tokens)
 2. Click **Create Token** → name it `github-actions`
 3. Copy the token
 
 #### VERCEL_ORG_ID & VERCEL_PROJECT_ID
+
 Run this in your terminal inside the project folder:
+
 ```bash
 npm i -g vercel
 vercel login
 vercel link
 ```
+
 Then check the `.vercel/project.json` file created — it contains:
+
 ```json
 {
   "orgId": "YOUR_ORG_ID",
@@ -84,6 +89,7 @@ git push
 ```
 
 GitHub Actions automatically:
+
 1. Installs Vercel CLI
 2. Builds the project
 3. Deploys to production on Vercel
@@ -126,6 +132,6 @@ moses-portfolio/
 
 ## 📬 Contact
 
-- **Email:** yormengh@gmail.com
+- **Email:** <yormengh@gmail.com>
 - **LinkedIn:** linkedin.com/in/moses-amartey
 - **GitHub:** github.com/yormengh
