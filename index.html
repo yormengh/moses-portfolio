@@ -336,6 +336,24 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
 @media (hover: none) {
   #cur-dot, #cur-ring { display: block; }
 }
+/* ── HIRE ME MODAL ── */
+#hireMeModal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:1.5rem;}
+#hireMeModal.open{display:flex;}
+.hm-backdrop{position:absolute;inset:0;background:rgba(14,14,12,0.6);backdrop-filter:blur(6px);cursor:pointer;}
+.hm-box{position:relative;background:var(--card);border-radius:24px;padding:3rem;max-width:680px;width:100%;box-shadow:var(--shadow-lg);border:1px solid var(--border);z-index:1;max-height:90vh;overflow-y:auto;}
+.hm-close{position:absolute;top:1.25rem;right:1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:all .2s;color:var(--ink);}
+.hm-close:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.hm-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;}
+.hm-title{font-family:'Cabinet Grotesk',sans-serif;font-size:1.8rem;font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:1.75rem;color:var(--ink);}
+.hm-body{font-size:.95rem;color:var(--ink2);line-height:1.85;}
+.hm-body p{margin-bottom:1.1rem;}
+.hm-body p:last-child{margin-bottom:0;}
+.hm-divider{border:none;border-top:1px solid var(--border);margin:1.75rem 0;}
+.hm-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem;}
+.hm-stats{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0;padding:1.25rem;background:var(--accent-light);border-radius:14px;border:1px solid rgba(26,71,42,.15);}
+.hm-stat{text-align:center;flex:1;min-width:80px;}
+.hm-stat-val{font-family:'Cabinet Grotesk',sans-serif;font-size:1.5rem;font-weight:900;color:var(--accent);}
+.hm-stat-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
 </style>
 </head>
 <body>
@@ -358,7 +376,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Resume
     </a>
-    <a href="mailto:yormengh@gmail.com" class="nav-cta">Hire Me</a>
+    <a href="mailto:yormengh@gmail.com" class="nav-cta" id="hireMeBtn">Hire Me</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
@@ -371,7 +389,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   <a href="#skills" onclick="closeMobileNav()">Skills</a>
   <a href="#contact" onclick="closeMobileNav()">Contact</a>
   <a href="assets/Moses-Amartey-Resume.pdf" download class="btn-dark" onclick="closeMobileNav()">📄 Resume</a>
-  <a href="mailto:yormengh@gmail.com" class="btn-dark" style="background:var(--accent);" onclick="closeMobileNav()">Hire Me →</a>
+  <a href="mailto:yormengh@gmail.com" class="btn-dark" style="background:var(--accent);" onclick="closeMobileNav();openHireMe()">Hire Me →</a>
 </div>
 
 <!-- HERO -->
@@ -855,6 +873,57 @@ if (hamburger) {
     mobileNav.classList.toggle('open');
   });
 }
+// ── HIRE ME MODAL ──
+function openHireMe() {
+  document.getElementById('hireMeModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeHireMe() {
+  document.getElementById('hireMeModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+window.openHireMe = openHireMe;
+window.closeHireMe = closeHireMe;
+document.getElementById('hireMeBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  openHireMe();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeHireMe();
+});
 </script>
+<!-- HIRE ME MODAL -->
+<div id="hireMeModal" role="dialog" aria-modal="true" aria-labelledby="hm-title">
+  <div class="hm-backdrop" onclick="closeHireMe()"></div>
+  <div class="hm-box">
+    <button class="hm-close" onclick="closeHireMe()" aria-label="Close">✕</button>
+    <div class="hm-eyebrow">Why Hire Moses Amartey</div>
+    <h2 class="hm-title" id="hm-title">The Engineer Who Ships,<br>Secures & Scales.</h2>
+    <div class="hm-body">
+      <p>Dear Hiring Manager,</p>
+      <p>I'm Moses Amartey, a Senior DevOps Engineer with 5+ years of hands-on experience building the cloud infrastructure that keeps modern businesses running — reliably, securely, and at scale. I don't just manage infrastructure; I architect it to be fault-tolerant, cost-efficient, and ready for whatever comes next.</p>
+      <p>At <strong>JOMACS IT Solutions</strong>, I designed AWS environments serving 3,000+ concurrent users, cut deployment failures by 35%, and accelerated release cycles by 40% across 20+ services — all while maintaining SOC2 compliance and zero-downtime deployments.</p>
+    </div>
+    <div class="hm-stats">
+      <div class="hm-stat"><div class="hm-stat-val">5+</div><div class="hm-stat-lbl">Years Experience</div></div>
+      <div class="hm-stat"><div class="hm-stat-val">40%</div><div class="hm-stat-lbl">Faster Deploys</div></div>
+      <div class="hm-stat"><div class="hm-stat-val">35%</div><div class="hm-stat-lbl">Fewer Failures</div></div>
+      <div class="hm-stat"><div class="hm-stat-val">3K+</div><div class="hm-stat-lbl">Users Supported</div></div>
+    </div>
+    <div class="hm-body">
+      <p>What sets me apart is my ability to bridge the gap between development speed and operational stability. I bring deep expertise in Terraform, Kubernetes, GitHub Actions, Jenkins, ArgoCD, and the full AWS ecosystem — and I embed security into every layer of the pipeline, not as an afterthought.</p>
+      <p>I'm based in Tema, Ghana and work remotely with globally distributed teams. I'm collaborative, self-driven, and thrive in environments where reliability and velocity both matter. If you're looking for someone who treats your infrastructure like a product — built to last, easy to maintain, and always improving — I'm your engineer.</p>
+      <p>I'd love to bring this energy to your team. Let's talk.</p>
+      <p style="margin-top:1.5rem;font-weight:600;color:var(--ink);">Warm regards,<br>Moses Amartey</p>
+    </div>
+    <hr class="hm-divider">
+    <div class="hm-actions">
+      <a href="mailto:yormengh@gmail.com" class="btn-dark" style="font-size:.9rem;padding:12px 26px;">✉️ Email Me Now</a>
+      <a href="https://www.linkedin.com/in/moses-amartey" target="_blank" class="btn-ghost" style="font-size:.9rem;padding:11px 24px;">💼 LinkedIn</a>
+      <a href="assets/Moses-Amartey-Resume.pdf" download class="btn-ghost" style="font-size:.9rem;padding:11px 24px;">📄 Download Resume</a>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
