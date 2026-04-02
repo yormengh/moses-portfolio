@@ -334,7 +334,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   transition: width .2s, height .2s, opacity .2s, border-color .2s;
 }
 @media (hover: none) {
-  #cur-dot, #cur-ring { display: none; }
+  #cur-dot, #cur-ring { display: block; }
 }
 </style>
 </head>
@@ -718,14 +718,31 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   var dot = document.getElementById('cur-dot');
   var ring = document.getElementById('cur-ring');
   if (!dot || !ring) return;
-  // Hide on touch devices
-  if (window.matchMedia('(hover: none)').matches) return;
+
   var mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  // Mouse support
   window.addEventListener('mousemove', function(e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
     dot.style.transform = 'translate(' + (mouseX - 5) + 'px, ' + (mouseY - 5) + 'px)';
   });
+
+  // Touch support — follow finger position
+  window.addEventListener('touchmove', function(e) {
+    var t = e.touches[0];
+    mouseX = t.clientX;
+    mouseY = t.clientY;
+    dot.style.transform = 'translate(' + (mouseX - 5) + 'px, ' + (mouseY - 5) + 'px)';
+  }, { passive: true });
+
+  // Scroll support — keep ring visible and drifting while scrolling
+  window.addEventListener('scroll', function() {
+    // nudge ring slightly so it feels alive on scroll
+    ringX += (mouseX - ringX) * 0.3;
+    ringY += (mouseY - ringY) * 0.3;
+  }, { passive: true });
+
   function animateRing() {
     ringX += (mouseX - ringX) * 0.22;
     ringY += (mouseY - ringY) * 0.22;
@@ -733,7 +750,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
     requestAnimationFrame(animateRing);
   }
   animateRing();
-  // Enlarge ring on hover
+
+  // Enlarge ring on hover (desktop)
   document.querySelectorAll('a, button').forEach(function(el) {
     el.addEventListener('mouseenter', function() {
       ring.style.width = '54px';
