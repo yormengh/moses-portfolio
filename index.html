@@ -4,6 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Moses Amartey — Senior DevOps Engineer</title>
+<meta name="description" content="Moses Amartey — Senior DevOps Engineer with 5+ years specializing in AWS, Kubernetes, Terraform, and CI/CD pipelines. Building production-grade cloud infrastructure for globally distributed teams."/>
+<meta property="og:title" content="Moses Amartey — Senior DevOps Engineer"/>
+<meta property="og:description" content="5+ years architecting fault-tolerant AWS cloud environments, Kubernetes platforms, and enterprise-grade CI/CD pipelines."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="assets/profile.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Moses Amartey — Senior DevOps Engineer"/>
+<meta name="twitter:description" content="5+ years architecting fault-tolerant AWS cloud environments, Kubernetes platforms, and enterprise-grade CI/CD pipelines."/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>"/>
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 :root {
@@ -164,7 +173,7 @@ nav.scrolled{box-shadow:var(--shadow);}
 .skill-bar-top{display:flex;justify-content:space-between;margin-bottom:5px;}
 .skill-bar-name{font-size:.82rem;font-weight:500;color:var(--ink2);}
 .skill-bar-pct{font-size:.78rem;color:var(--muted);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;}
-.skill-bar-track{height:5px;background:var(--bg2);border-radius:100px;overflow:hidden;}
+
 .skill-bar-fill{
   height:100%;border-radius:100px;background:var(--accent);width:0;
   transition:width 1.4s cubic-bezier(0.22,1,0.36,1);
@@ -252,6 +261,41 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
 .btn-resume-hero:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,71,42,.25);}
 
 
+/* HAMBURGER MENU */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:600;}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--ink);margin:5px 0;border-radius:2px;transition:all .3s;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px);}
+
+/* MOBILE NAV OVERLAY */
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(247,246,243,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:499;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--ink);text-decoration:none;transition:color .2s;}
+.mobile-nav a:hover{color:var(--accent);}
+.mobile-nav .btn-dark{font-size:1rem;}
+
+/* NAV ACTIONS */
+.nav-actions{display:flex;align-items:center;gap:.75rem;}
+
+/* HERO LAYOUT */
+.hero-layout{position:relative;z-index:1;width:100%;max-width:1200px;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;}
+
+/* CI/CD COLUMNS */
+.cicd-columns{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+.cicd-tool-badge{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;}
+.cicd-tool-label{color:#fff;border-radius:8px;padding:6px 14px;font-size:.75rem;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:6px;}
+.cicd-tool-label.gh{background:#24292e;}
+.cicd-tool-label.jenkins{background:#c0392b;}
+.cicd-stages{margin-top:1.25rem;padding:1rem;background:var(--bg2);border-radius:10px;border:1px solid var(--border);}
+.cicd-stages-title{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;}
+.cicd-stages-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.cicd-impact-strip{margin-top:2rem;padding:1.5rem;background:var(--accent-light);border:1px solid rgba(26,71,42,.15);border-radius:12px;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;}
+.cicd-impact-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:.9rem;color:var(--accent);}
+.cicd-impact-stats{display:flex;flex-wrap:wrap;gap:1.5rem;flex:1;}
+.cicd-impact-stat{text-align:center;}
+.cicd-impact-val{font-family:'Cabinet Grotesk',sans-serif;font-size:1.6rem;font-weight:900;color:var(--accent);}
+.cicd-impact-lbl{font-size:.72rem;color:var(--muted);}
 
 /* REVEAL - visible by default, JS enhances with animation */
 .reveal{opacity:1;transform:translateY(0);transition:opacity .7s,transform .7s;}
@@ -262,8 +306,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
 .reveal-delay-3{transition-delay:.3s;}
 
 /* RESPONSIVE */
-@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem;}.ach-grid{grid-template-columns:1fr 1fr;}.contact-grid{grid-template-columns:1fr;}.skills-layout{grid-template-columns:1fr;}}
-@media(max-width:600px){.nav-links,.nav-cta{display:none;}.hero-headline{font-size:3.2rem;}.hstat-num{font-size:2rem;}.projects-grid{grid-template-columns:1fr;}.ach-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem;}.ach-grid{grid-template-columns:1fr 1fr;}.contact-grid{grid-template-columns:1fr;}.skills-layout{grid-template-columns:1fr;}.hero-layout{grid-template-columns:1fr;}.avatar-wrap{display:none;}.cicd-columns{grid-template-columns:1fr;}}
+@media(max-width:600px){.nav-links,.nav-actions{display:none;}.hamburger{display:flex;flex-direction:column;justify-content:center;}.hero-headline{font-size:3.2rem;}.hstat-num{font-size:2rem;}.projects-grid{grid-template-columns:1fr;}.ach-grid{grid-template-columns:1fr;}}
 
 /* ── CUSTOM CURSOR ── */
 #cur-dot {
@@ -304,14 +348,26 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:.75rem;">
+  <div class="nav-actions">
     <a href="assets/Moses-Amartey-Resume.pdf" download class="btn-resume">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Resume
     </a>
-    <a href="/cdn-cgi/l/email-protection#d2abbda0bfb7bcb5ba92b5bfb3bbbefcb1bdbf" class="nav-cta">Hire Me</a>
+    <a href="mailto:yormengh@gmail.com" class="nav-cta">Hire Me</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#experience" onclick="closeMobileNav()">Experience</a>
+  <a href="#projects" onclick="closeMobileNav()">Projects</a>
+  <a href="#skills" onclick="closeMobileNav()">Skills</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="assets/Moses-Amartey-Resume.pdf" download class="btn-dark" onclick="closeMobileNav()">📄 Resume</a>
+  <a href="mailto:yormengh@gmail.com" class="btn-dark" style="background:var(--accent);" onclick="closeMobileNav()">Hire Me →</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -320,7 +376,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
   </div>
-  <div style="position:relative;z-index:1;width:100%;max-width:1200px;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;" class="hero-layout">
+  <div class="hero-layout">
     <!-- LEFT -->
     <div class="hero-inner">
       <div class="hero-eyebrow"><div class="eyebrow-dot"></div>Available for New Opportunities</div>
@@ -328,7 +384,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
       <p class="hero-sub">5+ years architecting fault-tolerant AWS cloud environments, Kubernetes platforms, and enterprise-grade CI/CD pipelines. Based in Tema, Accra, Ghana — working remotely worldwide.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn-dark">View My Work ↓</a>
-        <a href="/cdn-cgi/l/email-protection#cdb4a2bfa0a8a3aaa58daaa0aca4a1e3aea2a0" class="btn-ghost">Get In Touch →</a>
+        <a href="mailto:yormengh@gmail.com" class="btn-ghost">Get In Touch →</a>
         <a href="assets/Moses-Amartey-Resume.pdf" download class="btn-resume-hero">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Resume
@@ -354,12 +410,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   </div>
 </section>
 
-<style>
-@media(max-width:960px){
-  .hero-layout{ grid-template-columns:1fr !important; }
-  .avatar-wrap{ display:none !important; }
-}
-</style>
+
 
 <!-- MARQUEE -->
 <div class="marquee-strip">
@@ -543,58 +594,54 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
 
     <div class="skill-group reveal" style="grid-column:1/-1;">
       <div class="skill-group-header"><div class="skill-group-icon sg-teal">🔁</div><div class="skill-group-name">CI/CD Pipelines &amp; Automation</div></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;">
+      <div class="cicd-columns">
         <!-- GitHub Actions -->
         <div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;">
-            <div style="background:#24292e;color:#fff;border-radius:8px;padding:6px 14px;font-size:.75rem;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:6px;">
-              <span>⚙️</span> GitHub Actions Workflow
-            </div>
+          <div class="cicd-tool-badge">
+            <div class="cicd-tool-label gh"><span>⚙️</span> GitHub Actions Workflow</div>
           </div>
           <div class="skill-bars">
             <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Workflow YAML Authoring</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="95"></div></div></div>
-            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Reusable Workflows &amp; Actions</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div></div>
-            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Secrets &amp; Env Management</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="92"></div></div></div>
-            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Matrix Builds &amp; Self-hosted Runners</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div></div>
+            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Reusable Workflows & Actions</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div></div>
+            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Secrets & Env Management</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="92"></div></div></div>
+            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Matrix Builds & Self-hosted Runners</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div></div>
             <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Security Scanning Integration</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div></div>
           </div>
-          <div style="margin-top:1.25rem;padding:1rem;background:var(--bg2);border-radius:10px;border:1px solid var(--border);">
-            <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Typical Stages</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              <span class="proj-tag">Checkout</span><span class="proj-tag">Build &amp; Test</span><span class="proj-tag">Docker Build</span><span class="proj-tag">Push to ECR</span><span class="proj-tag">Deploy to EKS</span><span class="proj-tag">Notify Slack</span>
+          <div class="cicd-stages">
+            <div class="cicd-stages-title">Typical Stages</div>
+            <div class="cicd-stages-tags">
+              <span class="proj-tag">Checkout</span><span class="proj-tag">Build & Test</span><span class="proj-tag">Docker Build</span><span class="proj-tag">Push to ECR</span><span class="proj-tag">Deploy to EKS</span><span class="proj-tag">Notify Slack</span>
             </div>
           </div>
         </div>
         <!-- Jenkins -->
         <div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;">
-            <div style="background:#c0392b;color:#fff;border-radius:8px;padding:6px 14px;font-size:.75rem;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:6px;">
-              <span>🔧</span> Jenkins Pipeline
-            </div>
+          <div class="cicd-tool-badge">
+            <div class="cicd-tool-label jenkins"><span>🔧</span> Jenkins Pipeline</div>
           </div>
           <div class="skill-bars">
             <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Declarative Pipeline (Jenkinsfile)</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill red" data-w="92"></div></div></div>
             <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Scripted Pipeline (Groovy)</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill red" data-w="85"></div></div></div>
             <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Shared Libraries</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill red" data-w="80"></div></div></div>
-            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Multi-branch &amp; Blue Ocean</span><span class="skill-bar-pct">83%</span></div><div class="skill-bar-track"><div class="skill-bar-fill red" data-w="83"></div></div></div>
-            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Agent &amp; Plugin Management</span><span class="skill-bar-pct">87%</span></div><div class="skill-bar-track"><div class="skill-bar-fill red" data-w="87"></div></div></div>
+            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Multi-branch & Blue Ocean</span><span class="skill-bar-pct">83%</span></div><div class="skill-bar-track"><div class="skill-bar-fill red" data-w="83"></div></div></div>
+            <div class="skill-bar"><div class="skill-bar-top"><span class="skill-bar-name">Agent & Plugin Management</span><span class="skill-bar-pct">87%</span></div><div class="skill-bar-track"><div class="skill-bar-fill red" data-w="87"></div></div></div>
           </div>
-          <div style="margin-top:1.25rem;padding:1rem;background:var(--bg2);border-radius:10px;border:1px solid var(--border);">
-            <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Typical Stages</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <div class="cicd-stages">
+            <div class="cicd-stages-title">Typical Stages</div>
+            <div class="cicd-stages-tags">
               <span class="proj-tag">SCM Checkout</span><span class="proj-tag">Unit Test</span><span class="proj-tag">SonarQube Scan</span><span class="proj-tag">Docker Build</span><span class="proj-tag">Trivy Scan</span><span class="proj-tag">Deploy</span>
             </div>
           </div>
         </div>
       </div>
       <!-- Bottom comparison strip -->
-      <div style="margin-top:2rem;padding:1.5rem;background:var(--accent-light);border:1px solid rgba(26,71,42,.15);border-radius:12px;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;">
-        <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:.9rem;color:var(--accent);">Combined Impact</div>
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem;flex:1;">
-          <div style="text-align:center;"><div style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.6rem;font-weight:900;color:var(--accent);">40%</div><div style="font-size:.72rem;color:var(--muted);">Faster Release Cycles</div></div>
-          <div style="text-align:center;"><div style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.6rem;font-weight:900;color:var(--accent);">20+</div><div style="font-size:.72rem;color:var(--muted);">Services Automated</div></div>
-          <div style="text-align:center;"><div style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.6rem;font-weight:900;color:var(--accent);">Zero</div><div style="font-size:.72rem;color:var(--muted);">Manual Release Gates</div></div>
-          <div style="text-align:center;"><div style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.6rem;font-weight:900;color:var(--accent);">GitOps</div><div style="font-size:.72rem;color:var(--muted);">ArgoCD Integrated</div></div>
+      <div class="cicd-impact-strip">
+        <div class="cicd-impact-title">Combined Impact</div>
+        <div class="cicd-impact-stats">
+          <div class="cicd-impact-stat"><div class="cicd-impact-val">40%</div><div class="cicd-impact-lbl">Faster Release Cycles</div></div>
+          <div class="cicd-impact-stat"><div class="cicd-impact-val">20+</div><div class="cicd-impact-lbl">Services Automated</div></div>
+          <div class="cicd-impact-stat"><div class="cicd-impact-val">Zero</div><div class="cicd-impact-lbl">Manual Release Gates</div></div>
+          <div class="cicd-impact-stat"><div class="cicd-impact-val">GitOps</div><div class="cicd-impact-lbl">ArgoCD Integrated</div></div>
         </div>
       </div>
     </div>
@@ -628,20 +675,23 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
     <div class="contact-left reveal">
       <p class="contact-intro">I'm open to Senior DevOps, Cloud Infrastructure, Platform Engineering, and SRE opportunities worldwide. Whether you have a project, a role, or just want to talk cloud — I'd love to hear from you.</p>
       <div class="contact-cards">
-        <a href="/cdn-cgi/l/email-protection#b6cfd9c4dbd3d8d1def6d1dbd7dfda98d5d9db" class="contact-card"><div class="cc-icon sg-green">✉️</div><div><div class="cc-label">Email</div><div class="cc-value"><span class="__cf_email__" data-cfemail="d8a1b7aab5bdb6bfb098bfb5b9b1b4f6bbb7b5">[email&#160;protected]</span></div></div><div class="cc-arrow">→</div></a>
+        <a href="mailto:yormengh@gmail.com" class="contact-card"><div class="cc-icon sg-green">✉️</div><div><div class="cc-label">Email</div><div class="cc-value">yormengh@gmail.com</div></div><div class="cc-arrow">→</div></a>
         <a href="https://www.linkedin.com/in/moses-amartey" target="_blank" class="contact-card"><div class="cc-icon sg-blue">💼</div><div><div class="cc-label">LinkedIn</div><div class="cc-value">linkedin.com/in/moses-amartey</div></div><div class="cc-arrow">→</div></a>
         <a href="https://github.com/yormengh" target="_blank" class="contact-card"><div class="cc-icon sg-teal">⚙️</div><div><div class="cc-label">GitHub</div><div class="cc-value">github.com/yormengh</div></div><div class="cc-arrow">→</div></a>
         <a href="tel:+233555910005" class="contact-card"><div class="cc-icon sg-orange">📞</div><div><div class="cc-label">Phone</div><div class="cc-value">+233 555 910 005</div></div><div class="cc-arrow">→</div></a>
       </div>
     </div>
     <div class="contact-right reveal reveal-delay-2">
-      <div class="contact-form-box">
+      <form id="contactForm" class="contact-form-box" action="https://formsubmit.co/yormengh@gmail.com" method="POST">
         <div class="contact-form-title">Send a Message</div>
-        <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="John Smith"/></div>
-        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="john@company.com"/></div>
-        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about the opportunity or project…"></textarea></div>
-        <button class="form-submit" onclick="this.textContent='Message Sent ✓';this.style.background='var(--accent)';">Send Message →</button>
-      </div>
+        <input type="hidden" name="_subject" value="New Portfolio Contact">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <div class="form-group"><label class="form-label" for="contact-name">Your Name</label><input id="contact-name" type="text" name="name" class="form-input" placeholder="John Smith" required/></div>
+        <div class="form-group"><label class="form-label" for="contact-email">Email Address</label><input id="contact-email" type="email" name="email" class="form-input" placeholder="john@company.com" required/></div>
+        <div class="form-group"><label class="form-label" for="contact-message">Message</label><textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell me about the opportunity or project…" required></textarea></div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
     </div>
   </div>
 </section>
@@ -653,10 +703,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   <div class="footer-links">
     <a href="https://github.com/yormengh" target="_blank">GitHub</a>
     <a href="https://www.linkedin.com/in/moses-amartey" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#81f8eef3ece4efe6e9c1e6ece0e8edafe2eeec">Email</a>
+    <a href="mailto:yormengh@gmail.com">Email</a>
   </div>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 <script>
 // ── CUSTOM CURSOR ──
 (function(){
@@ -765,6 +815,21 @@ window.addEventListener('load', function() {
     }
   });
 });
+
+// ── MOBILE MENU ──
+var hamburger = document.getElementById('hamburger');
+var mobileNav = document.getElementById('mobileNav');
+function closeMobileNav() {
+  if (mobileNav) mobileNav.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('active');
+}
+window.closeMobileNav = closeMobileNav;
+if (hamburger) {
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('open');
+  });
+}
 </script>
 </body>
 </html>

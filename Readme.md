@@ -109,7 +109,7 @@ moses-portfolio/
 │       └── deploy.yml                # GitHub Actions CI/CD pipeline
 └── assets/
     ├── Moses-Amartey-Resume.pdf      # ← ADD YOUR RESUME HERE
-    └── profile.jpg                   # ← Optional: external photo ref
+    └── profile.png                   # ← Profile photo
 ```
 
 ---
