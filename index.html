@@ -306,8 +306,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
 .reveal-delay-3{transition-delay:.3s;}
 
 /* RESPONSIVE */
-@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem;}.ach-grid{grid-template-columns:1fr 1fr;}.contact-grid{grid-template-columns:1fr;}.skills-layout{grid-template-columns:1fr;}.hero-layout{grid-template-columns:1fr;}.avatar-wrap{display:none;}.cicd-columns{grid-template-columns:1fr;}}
-@media(max-width:600px){.nav-links,.nav-actions{display:none;}.hamburger{display:flex;flex-direction:column;justify-content:center;}.hero-headline{font-size:3.2rem;}.hstat-num{font-size:2rem;}.projects-grid{grid-template-columns:1fr;}.ach-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem;}.ach-grid{grid-template-columns:1fr 1fr;}.contact-grid{grid-template-columns:1fr;}.skills-layout{grid-template-columns:1fr;}.hero-layout{grid-template-columns:1fr;}.avatar-wrap{display:block;margin:0 auto;}.cicd-columns{grid-template-columns:1fr;}}
+@media(max-width:600px){.nav-links,.nav-actions{display:none;}.hamburger{display:flex;flex-direction:column;justify-content:center;}.hero-headline{font-size:3.2rem;}.hstat-num{font-size:2rem;}.projects-grid{grid-template-columns:1fr;}.ach-grid{grid-template-columns:1fr;}.avatar-wrap img{width:100% !important;height:320px !important;}}
 
 /* ── CUSTOM CURSOR ── */
 #cur-dot {
@@ -319,6 +319,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   pointer-events: none;
   z-index: 99999;
   will-change: transform;
+  transition: width .2s, height .2s, background .2s;
 }
 #cur-ring {
   position: fixed;
@@ -330,6 +331,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   pointer-events: none;
   z-index: 99998;
   will-change: transform;
+  transition: width .2s, height .2s, opacity .2s, border-color .2s;
+}
+@media (hover: none) {
+  #cur-dot, #cur-ring { display: none; }
 }
 </style>
 </head>
@@ -400,7 +405,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
     </div>
     <!-- RIGHT: Real Profile Photo -->
     <div class="avatar-wrap">
-      <img src="./assets/profile.png" alt="Moses Amartey — Senior DevOps Engineer" style="width:420px;height:500px;border-radius:28px;object-fit:cover;object-position:top center;box-shadow:var(--shadow-lg);display:block;">
+      <img src="/assets/profile.png" alt="Moses Amartey — Senior DevOps Engineer" style="width:420px;height:500px;border-radius:28px;object-fit:cover;object-position:top center;box-shadow:var(--shadow-lg);display:block;">
       <div class="avatar-exp-tag">🏅 5+ Yrs Experience</div>
       <div class="avatar-online">
         <div class="avatar-online-dot"></div>
@@ -713,6 +718,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
   var dot = document.getElementById('cur-dot');
   var ring = document.getElementById('cur-ring');
   if (!dot || !ring) return;
+  // Hide on touch devices
+  if (window.matchMedia('(hover: none)').matches) return;
   var mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
   window.addEventListener('mousemove', function(e) {
     mouseX = e.clientX;
@@ -720,8 +727,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:3rem 5vw;display
     dot.style.transform = 'translate(' + (mouseX - 5) + 'px, ' + (mouseY - 5) + 'px)';
   });
   function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
+    ringX += (mouseX - ringX) * 0.22;
+    ringY += (mouseY - ringY) * 0.22;
     ring.style.transform = 'translate(' + (ringX - 18) + 'px, ' + (ringY - 18) + 'px)';
     requestAnimationFrame(animateRing);
   }
